@@ -8,40 +8,51 @@ class Table
 
 	def robot_on_table
 		#PLACEMENT
-		if (0..table_width).include?(@robot_xposition) && (0..table_height).include?(@robot_yposition)
+		if (0..@table_width).include?(@@robot_xposition) && (0..@table_height).include?(@@y_position)
 			within_bounds = true
 		else
 			within_bounds = false
+		end
 
-		#MOVEMENT
+		#MOVEMENT CAUSE FALL? 
+		# The logic here used is future state programming for code performance >> It may be unusual however, i've read it leads to better code performance. 
+
+		case vector
 		
-		
-move 
-	case vector
-		when vector = 1 then
-		@robot_yposition += 1 
-		if (0..table_height).include?(@robot_yposition)
+		when @@vector = 0 then @@y_position += 1 
+		if (0..table_height).include?(@@y_position)
 			execute move
 			feedback[12]
 		else
-			robot_yposition -= 1
+			@@y_position -= 1
 			feedback[13]
-		when 
-			
-
-
-
-		&& (0..xWidth).include?(@X_yosition) #This prevents a fall
-			@y_yosition += 1
-			feedback[12]
-		elsif @robot_direction == 2 && (0..3).include?(@x_position)
-			@x_position += 1
-			feedback[12]
-		elsif @robot_direction == 3 && (1..4).include?(@y_yosition)
-			@y_yosition -= 1
-			feedback[12]	
-		elsif @robot_direction == 4 (1..4).include?(@x_position)
-			@x_position -= 1
-			feedback[12]
-
 		end
+
+		when @@vector = 1 then @@x_position += 1 
+		if (0..table_width).include?(@@x_position)
+			execute move
+			feedback[12]
+		else
+			x_position -= 1
+			feedback[13]
+		end
+		
+		when vector = 2 then @@y_position -= 1 
+		if (0..table_height).include?(@@y_position)
+			execute move
+			feedback[12]
+		else
+			@@y_position += 1
+			feedback[13]
+		end
+		
+		when vector = 3 then @@x_position -= 1 
+		if (0..table_width).include?(@@x_position)
+			execute move
+			feedback[12]
+		else
+			@@x_position += 1
+			feedback[13]
+		end
+
+end

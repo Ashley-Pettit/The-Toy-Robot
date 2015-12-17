@@ -1,4 +1,4 @@
-class Vectors
+class Vectors_and_movements
 
 	def vector
 		vector {
@@ -10,18 +10,13 @@ class Vectors
 	end
 
 	def move
-		withinbounds
-		if @robot_direction == 1 && (0..3).include?(@yPosition) #This prevents a fall
-			@yPosition += 1
-			feedback[12]
-		elsif @robot_direction == 2 && (0..3).include?(@xPosition)
-			@xPosition += 1
-			feedback[12]
-		elsif @robot_direction == 3 && (1..4).include?(@yPosition)
-			@yPosition -= 1
-			feedback[12]	
-		elsif @robot_direction == 4 (1..4).include?(@xPosition)
-			@xPosition -= 1
+		if withinbounds
+			case robot_direction
+			when condition
+				then
+				
+			end
+
 			feedback[12]
 		else
 			feedback[13]
