@@ -1,7 +1,6 @@
-Class Feedback
+class Feedback
 
-	def feedback
-		###n =  
+	def feedback(i)
 		feedback[0] = "ATTTTEMMMPPTING COMMAND [#{@user_command}]... Okay Dokay, I understand..."
 		feedback[1] = "Wait...Dude, I need to be board first. Please enter PLACE to put me down. Many Thanks, The Toy Robot"
 		feedback[2] = "Good Stuff. #{user_command} was correctly understood. Now... Where would you like to put me down?" 
@@ -16,28 +15,21 @@ Class Feedback
 		feedback[11] = "Understood Sir. I've rotated to the #{user_command} {! I'm now ready to move #{@robot_direction}" 
 		feedback[12] = "Okay I\'m moving #{user_command} one space! I\'m now at #{@x_position}, #{@y_position}) and I\'m facing #{@robot_direction}."
 		feedback[13] = "WAIT!!...NOOOOO!!! I understand you yet...I\'m not doing that. You\'ll drive me off the table!"
-
-
-		##puts feedback[n]
+		puts feedback(i)
 	end
 
 
-	def valid
-		
+	def validcommand
+		if user_command == "MOVE" || @user_command == "LEFT" || @user_command == "RIGHT" || @user_command == "PLACE" || @user_command == "BOOM" || @user_command == "REPORT" 
+			return valid
+		else
+			return !valid 
+		end
 
-	if user_command == "MOVE" || @user_command == "LEFT" || @user_command == "RIGHT" || @user_command == "PLACE" || @user_command == "BOOM" || @user_command == "REPORT" 
-		return valid
-	else
-		return !valid 
-	end
-
-	if robot_direction == "NORTH" || @robot_direction == "EAST" || @robot_direction == "SOUTH" || @robot_direction == "WEST" 
-		return valid
-	else
-		return
-			!valid
-	end
-	 
-	if command_place 
-		@x_position.nil? || @y_position.nil? # This prevents an entry of a string such as "SOUTH 1 SOUTH" => nil 1 SOUTH => Would crash the program
-	end
+ 	def validvector
+ 		if robot_direction == "NORTH" || @robot_direction == "EAST" || @robot_direction == "SOUTH" || @robot_direction == "WEST" 
+			return valid
+		else
+			return !valid
+		end
+end

@@ -7,9 +7,7 @@
 # You can change the size of the table and the robot will function just fine.
 
 # Testing is with Rspec
-
-require...
-
+# Using 
 
 class Robot
 
@@ -57,25 +55,22 @@ class Robot
 		puts "I understand [0-4], [0-4], [NORTH, EAST, SOUTH or WEST]. An example is 0 0 WEST"
 		command_place = gets.chomp
 		x_position, y_position, robot_direction = command_place.split(" ") 
-		x_position = Integer x_position rescue nil 		#How else could I ensure a non-interger doesn't fail? 
+		x_position = Integer x_position rescue nil 		#How else could I ensure a non-interger doesn't fail?
 		y_position = Integer y_position rescue nil 
 		robot_direction.upcase # Just to help the user
-		if @x_position.nil? || @y_position.nil? # This prevents a nil integer being entered into the place command
-			if  && @@within_bounds
-				puts feedback[9]
-				@robot_placed = true
-				give_command
-			elsif !@@within_bounds
-				feedback[7]
-				feedback[8]					
-				place
-			else #The command_place was invalid
-				feedback[5]
-				feedback[6]		
-				place
-			end		
-		end
-	
+		if command_place = @@valid && @@within_bounds
+			puts feedback[9]
+			@robot_placed = true
+			giveCommand
+		elsif command_place = @@valid && !@@within_bounds
+			feedback[7]
+			feedback[8]					
+			place
+		else #The command_place was invalid
+			feedback[5]
+			feedback[6]		
+			place
+		end			
 	end
 
 	def report

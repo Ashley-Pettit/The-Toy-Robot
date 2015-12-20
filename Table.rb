@@ -6,53 +6,30 @@ class Table
 	end
 
 
-	def robot_on_table
-		#PLACEMENT
+	def placement_in_bounds
 		if (0..@table_width).include?(@@robot_xposition) && (0..@table_height).include?(@@y_position)
 			within_bounds = true
 		else
 			within_bounds = false
 		end
 
-		#MOVEMENT CAUSE FALL? 
-		# The logic here used is future state programming for code performance >> It may be unusual however, i've read it leads to better code performance. 
-
+	def wont_fall			# Collect to get integer without changing it. 
 		case vector
-		
-		when @@vector = 0 then @@y_position += 1 
-		if (0..table_height).include?(@@y_position)
-			execute move
-			feedback[12]
-		else
-			@@y_position -= 1
-			feedback[13]
-		end
-
-		when @@vector = 1 then @@x_position += 1 
-		if (0..table_width).include?(@@x_position)
-			execute move
-			feedback[12]
-		else
-			x_position -= 1
-			feedback[13]
-		end
-		
-		when vector = 2 then @@y_position -= 1 
-		if (0..table_height).include?(@@y_position)
-			execute move
-			feedback[12]
-		else
-			@@y_position += 1
-			feedback[13]
-		end
-		
-		when vector = 3 then @@x_position -= 1 
-		if (0..table_width).include?(@@x_position)
-			execute move
-			feedback[12]
-		else
-			@@x_position += 1
-			feedback[13]
-		end
+			when 0 && (0..table_height).include?(@@y_position.collect -= 1) then
+				move.call
+				feedback[12]
+			when 1 && (0..table_width).include?(@@x_position.collect += 1) then
+				move.call
+				feedback[12]
+			when 2 && (0..table_height).include?(@@y_position.collect -= 1) then
+				move.call
+				feedback[12]
+			when 3 && (0..table_width).include?(@@x_position.collect -= 1)) then
+				move.call
+				feedback[12]
+			else
+				default: feedback[13]    # User told the command would drive the robot off table. Move not executed.
+				give_command
+	end
 
 end
