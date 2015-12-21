@@ -4,18 +4,20 @@ class VectorsAndMovements
 	#Note line 25-26 is hardcoded. Not ideal :( Easiest solution thou :) Could build something to get around but overcomplicating things. 
 
 	def valid_vector_command
- 		["NORTH", "WEST", "EAST", "SOUTH"].include?(@robot_direction) && (!@x_position.nil? && !@y_position.nil?) return valid
+ 		if ["NORTH", "WEST", "EAST", "SOUTH"].include?(@robot_direction) && (!@x_position.nil? && !@y_position.nil?)
+ 			return valid
+ 		end
 	end
 	
 	def vectors
-		vector = {"NORTH" = 0, "EAST" = 1, "SOUTH" = 2, "WEST" = 3} 
+		@vector = {"NORTH" => 0, "EAST" => 1, "SOUTH" => 2, "WEST" => 3} 
 	end
 
 	def left
 		if robot_direction == "NORTH"
 			robot_direction = "WEST"
 		else 
-			vector  {|string, integer| integer -=1, robot_direction = string} 
+			vector  {|string, integer| integer -=1; robot_direction = string} 
 		end
 		feedback[11]
 		give_command
@@ -25,7 +27,7 @@ class VectorsAndMovements
 		if robot_direction == "WEST"
 			robot_direction = "NORTH" 
 		else
-			vector  {|string, integer| integer +=1, robot_direction = string} 
+			vector  {|string, integer| integer +=1; robot_direction = string} 
 		end
 		feedback[11]	
 		give_command

@@ -54,7 +54,7 @@ class Robot
 		x_position = Integer x_position rescue nil 	#How else could I ensure a non-interger doesn't fail? 
 		y_position = Integer y_position rescue nil 
 		robot_direction.upcase
-		if valid_vector return valid 
+		if valid_vector.call return valid 
 			if @@within_bounds
 				feedback[9]
 				@robot_placed = true
