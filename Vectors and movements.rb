@@ -1,28 +1,31 @@
 class VectorsAndMovements
 
-	def vectors
-		vector = {"NORTH" = 0, "EAST" = 1, "SOUTH" = 2, "WEST" = 3}      #would an array be better. This in progress
-	end
+	#Vectors are a touch tricky. Here I've decided that robot_direction is always a sting yet vector will help robot_direction to change via a hash. 
+	#Note line 25-26 is hardcoded. Not ideal :( Easiest solution thou :) Could build something to get around but overcomplicating things. 
 
-	def directions
-		robot_directions = ["NORTH", "EAST", "SOUTH", "WEST"] 
+	def valid_vector_command
+ 		["NORTH", "WEST", "EAST", "SOUTH"].include?(@robot_direction) && (!@x_position.nil? && !@y_position.nil?) return valid
+	end
+	
+	def vectors
+		vector = {"NORTH" = 0, "EAST" = 1, "SOUTH" = 2, "WEST" = 3} 
 	end
 
 	def left
-		if robot_direction == "WEST" # this line is to go from 3 >> 0. Is there a better way??
-			robot_direction = "NORTH"
+		if robot_direction == "NORTH"
+			robot_direction = "WEST"
 		else 
-			robot_direction -= 1  #How do I do the opposite of next?
+			vector  {|string, integer| integer -=1, robot_direction = string} 
 		end
 		feedback[11]
 		give_command
 	end
 
 	def right
-		if robot_direction == "NORTH"
-			robot_direction = "WEST" 
+		if robot_direction == "WEST"
+			robot_direction = "NORTH" 
 		else
-			robot_direction.next #or +=
+			vector  {|string, integer| integer +=1, robot_direction = string} 
 		end
 		feedback[11]	
 		give_command
@@ -31,12 +34,12 @@ class VectorsAndMovements
 	def move
 		if within_bounds
 			case robot_direction
-				when 0 then y_position +=1
-				when 1 then x_position +=1
-				when 2 then y_position -=1
-				when 3 then x_position -=1
+				when "NORTH" then y_position +=1
+				when "EAST" then x_position +=1
+				when "SOUTH" then y_position -=1
+				when "WEST" then x_position -=1
 			end
-		puts feedback[12]
+			puts feedback[12]
 		else 
 			puts feedback[13]
 			give_command

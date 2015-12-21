@@ -1,6 +1,7 @@
 class Feedback
 
 	def feedback(i)
+		feedback = Array.new
 		feedback[0] = "ATTTTEMMMPPTING COMMAND [#{@user_command}]... Okay Dokay, I understand..."
 		feedback[1] = "Wait...Dude, I need to be board first. Please enter PLACE to put me down. Many Thanks, The Toy Robot"
 		feedback[2] = "Good Stuff. #{user_command} was correctly understood. Now... Where would you like to put me down?" 
@@ -17,14 +18,4 @@ class Feedback
 		feedback[13] = "WAIT!!...NOOOOO!!! I understand you yet...I\'m not doing that. You\'ll drive me off the table!"
 		puts feedback(i)
 	end
-
- 	def valid_placement
- 		if (@robot_direction == "NORTH" || @robot_direction == "EAST" || @robot_direction == "SOUTH" || 
- 			@robot_direction == "WEST") && (!@x_position.nil? && !@y_position.nil?)
-			return valid
-		else
-			return !valid
-		end
-	end
-	
 end

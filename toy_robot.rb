@@ -17,13 +17,13 @@ class Robot
 		puts "Good Morning Sir! I am the Toy Robot!"
 		puts "I'm awaiting your command! These are the commands I understand. PLACE / MOVE / LEFT / RIGHT / REPORT. An example is REPORT"
 		@robot_placed = false
-		feedback = Array.new
+		@first_command = true
 		give_command
 	end
 
 	def give_command
-		puts "How about another command? Remember I understand PLACE / MOVE / LEFT / RIGHT / REPORT." unless first_command = true
-		first_command = false
+		puts "How about another command? Remember I understand PLACE / MOVE / LEFT / RIGHT / REPORT." unless @first_command == true
+		@first_command = false
 		@user_command = gets.chomp.upcase #My colleagues all wrote in lowercase so i did  .upcase to help users. 
 			case user_command
 				when "REPORT" && !@robot_placed then 
@@ -38,10 +38,10 @@ class Robot
 				when "MOVE" then move 
 				when "LEFT" then left 
 				when "RIGHT" then right
-				when "REPORT" then report
+				when "REPORT" then report 
 				when "BOOM" then boom
-				else
-					puts feedback[4]
+				else 			#invalid input
+					puts feedback[4]	
 					give_command			
 			end
 	end
@@ -54,9 +54,9 @@ class Robot
 		x_position = Integer x_position rescue nil 	#How else could I ensure a non-interger doesn't fail? 
 		y_position = Integer y_position rescue nil 
 		robot_direction.upcase
-		if validvector.call return !valid 
+		if valid_vector return valid 
 			if @@within_bounds
-				puts feedback[9]
+				feedback[9]
 				@robot_placed = true
 				give_command
 			else 	#The placement was outside table bounds

@@ -1,4 +1,5 @@
 class Table
+	attr_accessor :within_bounds
 
 	def table_size
 		table_width = 4  #Set as 4 because 0 is counted as 1. The table is 5X5 with these settings
@@ -12,8 +13,9 @@ class Table
 		else
 			within_bounds = false
 		end
+	end
 
-	def wont_fall			# Collect to get integer without changing it. 
+	def wont_fall			# Collect to get value without changing it. 
 		case robot_direction
 			when 0 && (0..table_height).include?(@@y_position.collect -= 1) then
 				move.call
