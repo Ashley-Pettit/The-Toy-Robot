@@ -14,7 +14,7 @@ class Table
 		end
 
 	def wont_fall			# Collect to get integer without changing it. 
-		case vector.value
+		case robot_direction
 			when 0 && (0..table_height).include?(@@y_position.collect -= 1) then
 				move.call
 				feedback[12]
@@ -28,8 +28,9 @@ class Table
 				move.call
 				feedback[12]
 			else
-				default: feedback[13]    # User told the command would drive the robot off table. Move not executed.
+				feedback[13]    # User told the command would drive the robot off table. Move not executed.
 				give_command
+			end
 	end
 
 end

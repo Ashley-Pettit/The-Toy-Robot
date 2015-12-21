@@ -22,14 +22,13 @@ class Robot
 	end
 
 	def give_command
-		puts "How about another command? Remember I understand PLACE / MOVE / LEFT / RIGHT / REPORT."
+		puts "How about another command? Remember I understand PLACE / MOVE / LEFT / RIGHT / REPORT." unless first_command = true
+		first_command = false
 		@user_command = gets.chomp.upcase #My colleagues all wrote in lowercase so i did  .upcase to help users. 
-		if @user_command = valid
 			case user_command
-				when "REPORT" then 
+				when "REPORT" && !@robot_placed then 
 					puts feedback[1]		
-					giveCommand
-				unless !@robotPlaced
+					give_command
 				when "PLACE" then 
 					puts feedback [2]
 					place            
@@ -41,13 +40,10 @@ class Robot
 				when "RIGHT" then right
 				when "REPORT" then report
 				when "BOOM" then boom
-				else 
-					error_detected 
-				end
-		elsif user_command != valid
-			puts feedback [4]
-			give_command
-		end
+				else
+					puts feedback[4]
+					give_command			
+			end
 	end
 
 
@@ -63,7 +59,7 @@ class Robot
 				puts feedback[9]
 				@robot_placed = true
 				give_command
-			elsif !@@within_bounds
+			else 	#The placement was outside table bounds
 				feedback[7]
 				feedback[8]
 				place

@@ -1,7 +1,11 @@
 class VectorsAndMovements
 
 	def vectors
-		vectors = {"NORTH" = 0, "EAST" = 1, "SOUTH" = 2, "WEST" = 3}      #would an array be better?
+		vector = {"NORTH" = 0, "EAST" = 1, "SOUTH" = 2, "WEST" = 3}      #would an array be better. This in progress
+	end
+
+	def directions
+		robot_directions = ["NORTH", "EAST", "SOUTH", "WEST"] 
 	end
 
 	def left
@@ -16,7 +20,7 @@ class VectorsAndMovements
 
 	def right
 		if robot_direction == "NORTH"
-		robot_direction = "WEST" 
+			robot_direction = "WEST" 
 		else
 			robot_direction.next #or +=
 		end
@@ -25,8 +29,8 @@ class VectorsAndMovements
 	end
 
 	def move
-		if withinbounds
-			case robot_direction.value
+		if within_bounds
+			case robot_direction
 				when 0 then y_position +=1
 				when 1 then x_position +=1
 				when 2 then y_position -=1
