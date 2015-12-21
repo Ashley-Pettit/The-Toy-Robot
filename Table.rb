@@ -14,7 +14,7 @@ class Table
 		end
 
 	def wont_fall			# Collect to get integer without changing it. 
-		case vector
+		case vector.value
 			when 0 && (0..table_height).include?(@@y_position.collect -= 1) then
 				move.call
 				feedback[12]

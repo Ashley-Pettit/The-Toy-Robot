@@ -14,16 +14,16 @@ require...
 class Robot
 
 	def initalize
-		@robot_placed = false
 		puts "Good Morning Sir! I am the Toy Robot!"
 		puts "I'm awaiting your command! These are the commands I understand. PLACE / MOVE / LEFT / RIGHT / REPORT. An example is REPORT"
+		@robot_placed = false
 		feedback = Array.new
 		give_command
 	end
 
 	def give_command
 		puts "How about another command? Remember I understand PLACE / MOVE / LEFT / RIGHT / REPORT."
-		@user_command = gets.chomp.upcase #.upcase to help user if they write command in lower case. My colleagues all wrote in lowercase so i did this to help users. 
+		@user_command = gets.chomp.upcase #My colleagues all wrote in lowercase so i did  .upcase to help users. 
 		if @user_command = valid
 			case user_command
 				when "REPORT" then 
@@ -47,8 +47,6 @@ class Robot
 		elsif user_command != valid
 			puts feedback [4]
 			give_command
-		else
-			error_detected
 		end
 	end
 
@@ -57,25 +55,24 @@ class Robot
 		puts "I understand [0-4], [0-4], [NORTH, EAST, SOUTH or WEST]. An example is 0 0 WEST"
 		command_place = gets.chomp
 		x_position, y_position, robot_direction = command_place.split(" ") 
-		x_position = Integer x_position rescue nil 		#How else could I ensure a non-interger doesn't fail? 
+		x_position = Integer x_position rescue nil 	#How else could I ensure a non-interger doesn't fail? 
 		y_position = Integer y_position rescue nil 
-		robot_direction.upcase # Just to help the user
-		if @x_position.nil? || @y_position.nil? # This prevents a nil integer being entered into the place command
-			if  && @@within_bounds
+		robot_direction.upcase
+		if validvector.call return !valid 
+			if @@within_bounds
 				puts feedback[9]
 				@robot_placed = true
 				give_command
 			elsif !@@within_bounds
 				feedback[7]
-				feedback[8]					
+				feedback[8]
 				place
-			else #The command_place was invalid
+			end		
+		else	#The command_place was invalid
 				feedback[5]
 				feedback[6]		
 				place
-			end		
 		end
-	
 	end
 
 	def report

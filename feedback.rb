@@ -18,18 +18,21 @@ class Feedback
 		puts feedback(i)
 	end
 
-
-	def validcommand
-		if user_command == "MOVE" || @user_command == "LEFT" || @user_command == "RIGHT" || @user_command == "PLACE" || @user_command == "BOOM" || @user_command == "REPORT" 
+	def valid_command
+		if user_command == "MOVE" || @user_command == "LEFT" || @user_command == "RIGHT" || @user_command == "PLACE" || 
+			@user_command == "BOOM" || @user_command == "REPORT" 
 			return valid
 		else
 			return !valid 
 		end
 
- 	def validvector
- 		if robot_direction == "NORTH" || @robot_direction == "EAST" || @robot_direction == "SOUTH" || @robot_direction == "WEST" 
+ 	def valid_place
+ 		if (@robot_direction == "NORTH" || @robot_direction == "EAST" || @robot_direction == "SOUTH" || 
+ 			@robot_direction == "WEST") && (!@x_position.nil? && !@y_position.nil?)
 			return valid
 		else
 			return !valid
 		end
+	end
+	
 end

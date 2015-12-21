@@ -1,25 +1,24 @@
 class VectorsAndMovements
 
-	def vector
-		vectors = { "NORTH" = 0, "EAST" = 1, "SOUTH" = 2, "WEST" = 3 }     #A simple hash makes vectors easy :)    
+	def vectors
+		vectors = {"NORTH" = 0, "EAST" = 1, "SOUTH" = 2, "WEST" = 3}      #would an array be better?
 	end
 
-
 	def left
-		if vector.key == "WEST"
-			vector.key = "NORTH"
+		if robot_direction == "WEST" # this line is to go from 3 >> 0. Is there a better way??
+			robot_direction = "NORTH"
 		else 
-			vector.value -= 1  #How do I do the opposite of next?
+			robot_direction -= 1  #How do I do the opposite of next?
 		end
 		feedback[11]
 		give_command
 	end
 
 	def right
-		if vector == "NORTH"
-			vector = "WEST" 
+		if robot_direction == "NORTH"
+		robot_direction = "WEST" 
 		else
-			vector.next #or +=
+			robot_direction.next #or +=
 		end
 		feedback[11]	
 		give_command
@@ -27,19 +26,17 @@ class VectorsAndMovements
 
 	def move
 		if withinbounds
-			case vectors
-				when 0 then y_position +=1			
+			case robot_direction.value
+				when 0 then y_position +=1
 				when 1 then x_position +=1
 				when 2 then y_position -=1
 				when 3 then x_position -=1
 			end
-			puts feedback[12]
+		puts feedback[12]
 		else 
 			puts feedback[13]
 			give_command
 		end
-
 	end
-
 
 end
