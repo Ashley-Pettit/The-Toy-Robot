@@ -1,5 +1,7 @@
 class Table
-	attr_accessor :within_bounds
+	attr_writer :within_bounds
+	attr_reader :robot_direction
+	attr_reader :feedback
 
 	def table_size
 		@table_width = 4  #Set as 4 because 0 is counted as 1. The table is 5X5 with these settings
@@ -15,23 +17,18 @@ class Table
 		end
 	end
 
-	def wont_fall			# Collect to get value without changing it. 
+	def move_in_bounds			# Collect to get value without changing it. 
 		case @robot_direction
 			when "NORTH" && (0..table_height).include?(@@y_position.collect -= 1) then
-				move.call
-				feedback[12]
+				return valid        ########
 			when "EAST" && (0..table_width).include?(@@x_position.collect += 1) then
-				move.call
-				feedback[12]
+				return valid   #######
 			when "SOUTH" && (0..table_height).include?(@@y_position.collect -= 1) then
-				move.call
-				feedback[12]
+				return valid  ########
 			when "WEST" && (0..table_width).include?(@@x_position.collect -= 1) then
-				move.call
-				feedback[12]
+				return valid  ########
 			else
-				feedback[13]    # User told the command would drive the robot off table. Move not executed.
-				give_command
+				return !valid ########
 		end
 	end
 
