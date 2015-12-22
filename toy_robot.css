@@ -1,0 +1,67 @@
+ /* Get a class with . */
+
+body {
+	padding-top:1.2em;
+}
+
+.table {
+	border: .2em;
+	border-color: black;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	text-align: center;
+	width: 5em;
+	height: 5em;
+}
+
+
+.table:hover {
+	background-color:lightblue;
+
+}
+
+
+}
+
+#heading{
+	position: absolute;
+	left: 0;
+    top: 0;
+    width: 100%;
+	float: center;
+	background-color:teal;
+	color:white;
+	font-size: 50px;
+    margin-left:auto; 
+    margin-right:auto;
+	text-align: center;
+ }
+ 
+
+
+#Result {
+	border: 3px;
+	border-color: black;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	text-align: center;
+	width: 26.2em;
+	height: 12em;
+}
+
+
+
+
+
+
+footer {
+    height: 1.3em;
+    width: 100%;
+    padding: 1.1rem;
+	text-align: center;
+	font-size: 18px;
+	background-color:teal;
+	color:white;
+}
