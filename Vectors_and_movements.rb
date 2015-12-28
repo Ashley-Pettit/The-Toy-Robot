@@ -12,7 +12,7 @@ class VectorsAndMovements
     end
     
 	def move(vector)
-		feedback(command_understood)
+		feedback("command_understood")
 		if is_move_in_bounds(vector)
 			case vector
 				when "NORTH" then @y_position += 1

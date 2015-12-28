@@ -5,7 +5,7 @@ class Feedback
 	#attr_reader :@x_position
 	#attr_reader :@y_position
 
-def give_feedback(i)
+	def feedback(i)
 		feedback = {
 		"command_understood" => "ATTTTEMMMPPTING COMMAND [#{@user_command}]... Okay Dokay, I understand...",
 		"command_not_understood" => "ATTTTEMMMPPTING [#{@user_command}] COMMAND... Hrmmmm.... Wait... Nope... Sorry sir but I don't understand you :(",

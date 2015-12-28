@@ -31,17 +31,18 @@ class Robot
 			case @user_command
 				when "REPORT" then report 
 				when "PLACE" then 
-					feedback(place_understood)
-					while place
-					end
-				when !@robot_placed then    #The subsequent cases require robot_placed = true. 
-					feedback(not_on_table)
+					Feedback.feedback("place_understood")
+					#while place
+					place
+					#end
+				when !@robot_placed then    #The subsequent cases are thus where robot_placed = true. 
+					Feedback.feedback("not_on_table")
 				when "MOVE" then move (@robot_direction)
 				when "LEFT" then VectorsAndMovements.rotate ("left") #load rotate and pass "left"
 				when "RIGHT" then rotate ("right")
 				when "BOOM"  then boom # Terminate game
 				else
-					feedback(command_not_understood)
+					feedback("command_not_understood")
 			end
 			#@give_command = true
 	end
@@ -53,35 +54,34 @@ class Robot
 # 		@user_command, extra = gets.chomp.upcase.split(" ") 
 #		if !extra.nil
 #		x_position, y_position, @robot_direction = extra.split(",")
-		x_position = x_position.to_i
-		y_position = y_position.to_i
+		x_position = Integer x_position rescue nil #Researched .to_i but not used. s.to_i => converts a string to 0 => string 0 treated as valid when is not valid
+		y_position = Integer y_position rescue nil #rescue nil is not prefered however, rescues a string entry. 
 		if is_valid_vector(x_postion, y_position, @robot_direction)
 			if is_placement_in_bounds(x_position, y_position)
-				feedback(placed)
+				feedback("placed")
 				@robot_placed = true
 				place = true
 			else 
-				feedback(place_is_off_table)
+				feedback("place_is_off_table")
 				place = false
 			end		
 		else	
-				feedback(place_format_invalid)
+				feedback("place_format_invalid")
 				place = false
 		end
 	end
 
 	def report
-		feedback(command_understood)
+		feedback("command_understood")
 		if @robot_placed then 
-			puts feedback(report)
+			feedback("report")
 		else
-			puts feedback(report_without_placed)
+			feedback("report_without_placed")
 		end
 	end
 
 	def boom
-		puts "ERROR ERROR THIS SHOULD NOT HAVE HAPPENEND!!! BOOOOOOMMM!!!..."
-		puts "Your robot died... The end."
+		puts "ERROR ERROR THIS SHOULD NOT HAVE HAPPENEND!!! BOOOOOOMMM!!!...\r\nYour robot exploded... The end."
 		@give_command = false
 	end
 end
