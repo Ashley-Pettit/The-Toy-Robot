@@ -1,34 +1,34 @@
 class Table
-	attr_writer :within_bounds
-	attr_reader :robot_direction
-	attr_reader :feedback
+
+	attr_reader :@x_position
+	attr_reader :@y_position
 
 	def table_size
-		@table_width = 4  #Set as 4 because 0 is counted as 1. The table is 5X5 with these settings
-		@table_height = 4
+		@table_width = 4   #Note this leads to a 5x5 table as 0 is counted as the first value. This could be changed using + 1.
+		@table_height = 4   
 	end
 
 
-	def placement_in_bounds
-		if (0..@table_width).include?(@@robot_xposition) && (0..@table_height).include?(@@y_position)
-			within_bounds = true
+	def is_placement_in_bounds (x_position, y_position)
+		if (0..(@table_width)).include?(x_position) && (0..(@table_height)).include?(y_position)
+			is_placement_in_bounds = true
 		else
-			within_bounds = false
+			is_placement_in_bounds = false
 		end
 	end
 
-	def move_in_bounds			# Collect to get value without changing it. 
-		case @robot_direction
-			when "NORTH" && (0..table_height).include?(@@y_position.collect -= 1) then
-				return valid        ########
-			when "EAST" && (0..table_width).include?(@@x_position.collect += 1) then
-				return valid   #######
-			when "SOUTH" && (0..table_height).include?(@@y_position.collect -= 1) then
-				return valid  ########
-			when "WEST" && (0..table_width).include?(@@x_position.collect -= 1) then
-				return valid  ########
+	def is_move_in_bounds(vector)
+		case vector
+			when "NORTH" && (0..@table_height).include?(@y_position.collect -= 1) then #collect is used to test the variable rather than to modify
+				is_move_in_bounds = true
+			when "EAST" && (0..@table_width).include?(@x_position.collect += 1) then
+				is_move_in_bounds = true
+			when "SOUTH" && (0..@table_height).include?(@y_position.collect -= 1) then
+				is_move_in_bounds = true
+			when "WEST" && (0..@table_width).include?(@x_position.collect -= 1) then
+				is_move_in_bounds = true
 			else
-				return !valid ########
+				is_move_in_bounds = false
 		end
 	end
 

@@ -40,9 +40,9 @@ class Robot
 				when !@robot_placed then 
 					puts feedback[3] 
 					give_command
-				when "MOVE" then move 
-				when "LEFT" then left 
-				when "RIGHT" then right
+				when "MOVE" then move (@@robot_direction)
+				when "LEFT" then rotate("left") #load rotate and pass "left"
+				when "RIGHT" then rotate("right")
 				when "REPORT" then report 
 				when "BOOM" then boom
 				else   #invalid input
@@ -51,16 +51,15 @@ class Robot
 			end
 	end
 
-
 	def place
 		puts "I understand [0-4], [0-4], [NORTH, EAST, SOUTH or WEST]. An example is 0 0 WEST"
 		command_place = gets.chomp
 		@@x_position, @@y_position, @@robot_direction = command_place.split(" ") 
-		@@x_position = Integer x_position rescue nil 	#How else could I ensure a non-interger doesn't fail? 
+		@@x_position = Integer x_position rescue nil #How else could I ensure a non-interger doesn't fail? 
 		@@y_position = Integer y_position rescue nil #################
-		@@robot_direction.upcase
-		if valid_vector return valid ##################
-			if @within_bounds
+		@@robot_direction.upcase unless @@robot_direction.Is_a Integer # DANGEROUS
+		if valid_vector(@@robot_direction) return valid ##################
+			if placement_in_bounds(x_position, y_position) return true  #####
 				feedback[9]
 				@robot_placed = true
 				give_command
