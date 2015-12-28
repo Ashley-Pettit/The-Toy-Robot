@@ -8,21 +8,21 @@ class VectorsAndMovements
     def rotate(direction)
     	feedback(command_understood)
         @robot_direction = @vectors.key((@vectors[@robot_direction] + @left_or_right[direction]) % 4) # => "NORTH"(0) => "LEFT"(-1) = "WEST"(3)  
-        feedback(rotated)
+        feedback("rotated")
     end
     
 	def move(vector)
 		feedback(command_understood)
 		if is_move_in_bounds(vector)
 			case vector
-				when "NORTH" then @@y_position += 1
-				when "EAST" then @@x_position += 1
-				when "SOUTH" then @@y_position -= 1
-				when "WEST" then @@x_position -= 1
+				when "NORTH" then @y_position += 1
+				when "EAST" then @x_position += 1
+				when "SOUTH" then @y_position -= 1
+				when "WEST" then @x_position -= 1
 			end
-			feedback(moving)
+			feedback("moving")
 		else 
-			feedback(move_not_in_bounds)
+			feedback("move_not_in_bounds")
 		end
 	end
 
