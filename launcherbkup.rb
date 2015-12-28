@@ -19,15 +19,16 @@ class Robot
 		@first_command = true
 		puts "Good Morning Sir! I am the Toy Robot!"
 		puts "I'm awaiting your command! These are the commands I understand. PLACE / MOVE / LEFT / RIGHT / REPORT. An example is REPORT"
-		while @give_command
-		end
+		give_command
+		#while @give_command
+		#end
 	end
 
 	def give_command
 		puts "How about another command? Remember I understand PLACE / MOVE / LEFT / RIGHT / REPORT." unless @first_command == true
 		@first_command = false
 		@user_command = gets.chomp.upcase #My colleagues all wrote in lowercase so i did .upcase to help users. 
-			case user_command
+			case @user_command
 				when "REPORT" then report 
 				when "PLACE" then 
 					feedback(place_understood)
@@ -36,13 +37,13 @@ class Robot
 				when !@robot_placed then    #The subsequent cases require robot_placed = true. 
 					feedback(not_on_table)
 				when "MOVE" then move (@robot_direction)
-				when "LEFT" then rotate("left") #load rotate and pass "left"
-				when "RIGHT" then rotate("right")
+				when "LEFT" then VectorsAndMovements.rotate ("left") #load rotate and pass "left"
+				when "RIGHT" then rotate ("right")
 				when "BOOM"  then boom # Terminate game
 				else
 					feedback(command_not_understood)
 			end
-			@give_command = true
+			#@give_command = true
 	end
 
 	def place
@@ -51,7 +52,7 @@ class Robot
 		x_position, y_position, @robot_direction = command_place.split(" ") 
 # 		@user_command, extra = gets.chomp.upcase.split(" ") 
 #		if !extra.nil
-#			x_position, y_position, @robot_direction = extra.split(",")
+#		x_position, y_position, @robot_direction = extra.split(",")
 		x_position = x_position.to_i
 		y_position = y_position.to_i
 		if is_valid_vector(x_postion, y_position, @robot_direction)
@@ -59,17 +60,18 @@ class Robot
 				feedback(placed)
 				@robot_placed = true
 				place = true
-			else 	#The placement was outside table bounds
+			else 
 				feedback(place_is_off_table)
 				place = false
 			end		
-		else	#The command_place was invalid
+		else	
 				feedback(place_format_invalid)
 				place = false
 		end
 	end
 
 	def report
+		feedback(command_understood)
 		if @robot_placed then 
 			puts feedback(report)
 		else
@@ -84,7 +86,7 @@ class Robot
 	end
 end
 
-Robot.new  #Start game - Loads initialize
+Robot.new  #Start robot - Loads initialize
 
 
 
