@@ -37,9 +37,9 @@ class Robot
 					place
 				when !@robot_placed then    #The subsequent cases are thus where robot_placed = true. 
 					Feedback.feedback("not_on_table")
-				when "MOVE" then move (@robot_direction)
+				when "MOVE" then VectorsAndMovements.move (@robot_direction)
 				when "LEFT" then VectorsAndMovements.rotate ("left") #load rotate and pass "left"
-				when "RIGHT" then rotate ("right")
+				when "RIGHT" then VectorsAndMovements.rotate ("right")
 				when "BOOM"  then boom # Terminate game
 				else
 					Feedback.feedback("command_not_understood")
