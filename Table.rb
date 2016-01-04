@@ -1,7 +1,7 @@
 class Table
 
-	#attr_reader :@x_position
-	#attr_reader :@y_position
+	attr_reader :@x_position
+	attr_reader :@y_position
 
 	def table_size
 		@table_width = 4   #Note this leads to a 5x5 table as 0 is counted as the first value. This could be changed using + 1.

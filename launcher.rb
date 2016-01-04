@@ -26,23 +26,23 @@ class Robot
 
 	def give_command
 		puts "How about another command? Remember I understand PLACE / MOVE / LEFT / RIGHT / REPORT." unless @first_command == true
-		@first_command = false
 		@user_command = gets.chomp.upcase #My colleagues all wrote in lowercase so i did .upcase to help users. 
+		@first_command = false
 			case @user_command
 				when "REPORT" then report 
 				when "PLACE" then 
-					@Feedback.feedback("place_understood")
+					Feedback.feedback("place_understood")
 					#while place
 					#end
 					place
 				when !@robot_placed then    #The subsequent cases are thus where robot_placed = true. 
-					@Feedback.feedback("not_on_table")
+					Feedback.feedback("not_on_table")
 				when "MOVE" then move (@robot_direction)
 				when "LEFT" then VectorsAndMovements.rotate ("left") #load rotate and pass "left"
 				when "RIGHT" then rotate ("right")
 				when "BOOM"  then boom # Terminate game
 				else
-					feedback("command_not_understood")
+					Feedback.feedback("command_not_understood")
 			end
 			#@give_command = true
 	end
@@ -56,27 +56,27 @@ class Robot
 #		x_position, y_position, @robot_direction = extra.split(",")
 		x_position = Integer x_position rescue nil #Researched .to_i but not used. s.to_i => if string => string to int = int value 0 => x value = 0 => incorrect placement.
 		y_position = Integer y_position rescue nil #Thus rescue nil is used so Integer can be used. = Integer is different to .to_i as a string entry throws an error rather than 0. This error must be rescued 
-		if is_valid_vector(x_postion, y_position, @robot_direction)
-			if is_placement_in_bounds(x_position, y_position)
-				feedback("placed")
+		if VectorsAndMovements.is_valid_vector(x_postion, y_position, @robot_direction)
+			if Table.is_placement_in_bounds(x_position, y_position)
+				Feedback.feedback("placed")
 				@robot_placed = true
 				place = true
 			else 
-				feedback("place_is_off_table")
+				Feedback.feedback("place_is_off_table")
 				place = false
 			end		
 		else	
-				feedback("place_format_invalid")
+				Feedback.feedback("place_format_invalid")
 				place = false
 		end
 	end
 
 	def report
-		@Feedback.feedback("command_understood")
+		Feedback.feedback("command_understood")
 		if @robot_placed then 
-			@Feedback.feedback("report")
+			Feedback.feedback("report")
 		else
-			@Feedback.Feedback.feedback("report_without_placed")
+			Feedback.feedback.("report_without_placed")
 		end
 	end
 
