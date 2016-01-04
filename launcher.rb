@@ -14,11 +14,12 @@ require_relative 'Feedback'
 
 class Robot
 
+	attr_accessor :@robot_direction
+
 	def initialize
 		@robot_placed = false
 		@first_command = true
-		puts "Good Morning Sir! I am the Toy Robot! \r\n I'm awaiting your command! 
-		These are the commands I understand. PLACE / MOVE / LEFT / RIGHT / REPORT. An example is REPORT"
+		puts "Good Morning Sir! I am the Toy Robot! \r\n I'm awaiting your command! These are the commands I understand. PLACE / MOVE / LEFT / RIGHT / REPORT. An example is REPORT"
 		give_command
 		#while @give_command
 		#end

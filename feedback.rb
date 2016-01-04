@@ -1,9 +1,9 @@
 class Feedback
 
-	#attr_reader :place
-#	attr_reader :@robot_direction
-#	attr_reader :@x_position
-#	attr_reader :@y_position
+	attr_accessor :@user_command
+	attr_accessor :@robot_direction
+	attr_accessor :@x_position
+	attr_accessor :@y_position
 
 	def feedback(i)
 		feedback = {
