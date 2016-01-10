@@ -13,14 +13,19 @@ require_relative 'VectorsAndMovements'
 require_relative 'Feedback'
 
 class Robot
+	#Wrong doesn't need @
+	#Probably don't even need an attr_accessor here
+	attr_accessor :robot_direction
 
-	attr_accessor :@robot_direction
-
-	def initialize
+	def initialize(table)
 		@robot_placed = false
 		@first_command = true
-		puts "Good Morning Sir! I am the Toy Robot! \r\n I'm awaiting your command! These are the commands I understand. PLACE / MOVE / LEFT / RIGHT / REPORT. An example is REPORT"
+		puts "Good Morning Sir! I am the Toy Robot! \n I'm awaiting your command! These are the commands I understand. PLACE / MOVE / LEFT / RIGHT / REPORT. An example is REPORT"
 		give_command
+
+		@feedback = Feedback.new
+		@vectors_and_movements = VectorsAndMovements.new
+		@table = table
 		#while @give_command
 		#end
 	end
@@ -29,22 +34,23 @@ class Robot
 		puts "How about another command? Remember I understand PLACE / MOVE / LEFT / RIGHT / REPORT." unless @first_command == true
 		@user_command = gets.chomp.upcase #My colleagues all wrote in lowercase so i did .upcase to help users. 
 		@first_command = false
-			case @user_command
-				when "REPORT" then report 
-				when "PLACE" then 
-					Feedback.feedback("place_understood")
-					#while place
-					#end
-					place
-				when !@robot_placed then    #The subsequent cases are thus where robot_placed = true. 
-					Feedback.feedback("not_on_table")
-				when "MOVE" then VectorsAndMovements.move (@robot_direction)
-				when "LEFT" then VectorsAndMovements.rotate ("left") #load rotate and pass "left"
-				when "RIGHT" then VectorsAndMovements.rotate ("right")
-				when "BOOM"  then boom # Terminate game
-				else
-					Feedback.feedback("command_not_understood")
-			end
+
+		case @user_command
+			when "REPORT" then report 
+			when "PLACE" then 
+				@feedback.feedback("place_understood")
+				#while place
+				#end
+				place
+			when !@robot_placed then    #The subsequent cases are thus where robot_placed = true. 
+				@feedback.feedback("not_on_table")
+			when "MOVE" then @vectorsAndMovements.move (@robot_direction)
+			when "LEFT" then @vectorsAndMovements.rotate ("left") #load rotate and pass "left"
+			when "RIGHT" then @vectorsAndMovements.rotate ("right")
+			when "BOOM"  then boom # Terminate game
+			else
+				@feedback.feedback("command_not_understood")
+		end
 			#@give_command = true
 	end
 
@@ -57,8 +63,8 @@ class Robot
 #		x_position, y_position, @robot_direction = extra.split(",")
 		x_position = Integer x_position rescue nil #Researched .to_i but not used. s.to_i => if string => string to int = int value 0 => x value = 0 => incorrect placement.
 		y_position = Integer y_position rescue nil #Thus rescue nil is used so Integer can be used. = Integer is different to .to_i as a string entry throws an error rather than 0. This error must be rescued 
-		if VectorsAndMovements.is_valid_vector(x_postion, y_position, @robot_direction)
-			if Table.is_placement_in_bounds(x_position, y_position)
+		if @vectorsAndMovements.is_valid_vector(x_postion, y_position, @robot_direction)
+			if @table.is_placement_in_bounds(x_position, y_position)
 				Feedback.feedback("placed")
 				@robot_placed = true
 				place = true
@@ -77,14 +83,15 @@ class Robot
 		if @robot_placed then 
 			Feedback.feedback("report")
 		else
-			Feedback.feedback.("report_without_placed")
+			Feedback.feedback("report_without_placed")
 		end
 	end
 
 	def boom
-		puts "ERROR ERROR THIS SHOULD NOT HAVE HAPPENEND!!! BOOOOOOMMM!!!...\r\nYour robot exploded... The end."
+		puts "ERROR ERROR THIS SHOULD NOT HAVE HAPPENEND!!! BOOOOOOMMM!!!...s\nYour robot exploded... The end."
 		#@give_command = false
 	end
 end
 
-Robot.new  #Start robot - Loads initialize
+table = Table.new(5, 5)
+Robot.new(table)  #Start robot - Loads initialize

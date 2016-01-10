@@ -5,7 +5,7 @@ class Feedback
 	attr_accessor :@x_position
 	attr_accessor :@y_position
 
-	def feedback(i)
+	def self.feedback(feedback_name)
 		feedback = {
 		"command_understood" => "ATTTTEMMMPPTING COMMAND [#{@user_command}]... Okay Dokay, I understand...",
 		"command_not_understood" => "ATTTTEMMMPPTING [#{@user_command}] COMMAND... Hrmmmm.... Wait... Nope... Sorry sir but I don't understand you :(",
@@ -22,7 +22,7 @@ class Feedback
 		"moving" => "Okay I\'m moving #{@robot_direction} one space! I\'m now at #{@x_position}, #{@y_position}) and I\'m facing #{@robot_direction}.",
 		"move_not_in_bounds" => "WAIT!!...NOOOOO!!! I understand you yet...I\'m not doing that. You\'ll drive me off the table!"
 		}
-		puts feedback[i]
+		puts feedback[feedback_name]
 	end
 
 end
