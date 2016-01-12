@@ -21,5 +21,4 @@ A few things that I find interesting in the code
         # when "WEST" && (0..@table_width).include?(@x_position - 1) then
     Minus 1 is merely used such that a 5x5 table can be contstructed with the input of 5 rather than 4 (As 0,0 is the first position deemed South West). It leads to a little extra code however, I feel it makes it more understandable. 
 
-
-So I did a lot 
+REQUIREMENTS

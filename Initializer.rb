@@ -11,7 +11,9 @@
 require_relative 'Robot'
 require_relative 'Table'
 require_relative 'VectorsAndMovements'
-require_relative 'feedback'
+require_relative 'Feedback'
 require_relative 'Testing'
 
 Robot.new()
+@vectors = {"NORTH" => 0, "EAST" => 1, "SOUTH" => 2, "WEST" => 3} 
+@left_or_right = {"left" => -1, "right" => 1}

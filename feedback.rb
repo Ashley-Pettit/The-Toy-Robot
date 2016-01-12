@@ -1,6 +1,6 @@
-class Feedback
+class Feedback < Robot
 
-	def self.feedback(feedback_name)
+	def give_feedback(feedback_name)
 		feedback = {
 		"command_understood" => "ATTTTEMMMPPTING COMMAND [#{@user_command}]... Okay Dokay, I understand...",
 		"command_not_understood" => "ATTTTEMMMPPTING [#{@user_command}] COMMAND... Hrmmmm.... Wait... Nope... Sorry sir but I don't understand you :(",
@@ -20,11 +20,11 @@ class Feedback
 		puts feedback[feedback_name]
 	end
 
-	def information_storage
-		@x_position
-		@y_position
-		@robot_direction
-	end
+#	def information_storage
+#		@x_position
+#		@y_position
+#		@robot_direction
+	#end
 
 	# Note using info storage is the way I chose to do this. I could have used attr accessor. The alternative is passing way too many variables which would look messy
 
