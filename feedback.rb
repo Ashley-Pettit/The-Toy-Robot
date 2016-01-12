@@ -1,7 +1,6 @@
 class Feedback
 
 	attr_accessor :@user_command
-	attr_accessor :@robot_direction
 	attr_accessor :@x_position
 	attr_accessor :@y_position
 
@@ -11,9 +10,9 @@ class Feedback
 		"command_not_understood" => "ATTTTEMMMPPTING [#{@user_command}] COMMAND... Hrmmmm.... Wait... Nope... Sorry sir but I don't understand you :(",
 		"not_on_table" => "Wait... Your command is okay but I need to be on the table first. Please use PLACE to put me on the table.",
 		"place_understood" => "Good Stuff. #{@user_command} was correctly understood. Now... Where would you like to put me down?" ,
-		"place_format_invalid" => "Sorry Sir the PLACE command direction format is invalid.\r\n
+		"place_format_invalid" => "Sorry Sir the PLACE command direction format is invalid.\n
 										One more time... Please follow the example format",
-		"place_is_off_table" => "Nooooooo your placing me off the table!!! I won't do it! I won\'t! \r\n 
+		"place_is_off_table" => "Nooooooo your placing me off the table!!! I won't do it! I won\'t! \n 
 										One more time.... Please PLACE me within the bounds of the table",   
 		"placed" => "Okay Sir, I have been placed at #{@x_position} #{@y_position} facing #{@robot_direction}. I\'m ready to move!",
 		"report" => "Gotcha! Okay... My present location is (#{@x_position}, #{@y_position}) facing #{@robot_direction}. Have a happy day!",
@@ -23,6 +22,10 @@ class Feedback
 		"move_not_in_bounds" => "WAIT!!...NOOOOO!!! I understand you yet...I\'m not doing that. You\'ll drive me off the table!"
 		}
 		puts feedback[feedback_name]
+	end
+
+	def information_storage
+
 	end
 
 end

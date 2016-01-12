@@ -64,7 +64,7 @@ class Robot
 				if @table.is_placement_in_bounds(x_position, y_position)
 					@feedback.feedback("placed")
 					@robot_placed = true
-					continue_place = false
+					@continue_place = false
 				else 
 					@feedback.feedback("place_is_off_table")
 				end		
@@ -75,11 +75,11 @@ class Robot
 	end
 
 	def report
-		@feedback.feedback("command_understood")
+		feedback.@feedback("command_understood")
 		if @robot_placed then 
-			@feedback.feedback("report")
+			feedback.@feedback("report")
 		else
-			@feedback.feedback("report_without_placed")
+			feedback.@feedback("report_without_placed")
 		end
 	end
 
