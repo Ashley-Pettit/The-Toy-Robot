@@ -1,9 +1,8 @@
 class Table
 
-
-	def table_size(width, height)
-		@table_width = width 
-		@table_height = height  
+	def table_size
+		@table_width = 5 
+		@table_height = 5  
 	end
 
 
@@ -15,11 +14,11 @@ class Table
 		case vector
 			when "NORTH" && (0..@table_height - 1).include?(@y_position - 1) then
 				is_move_in_bounds 
-			when "EAST" && (0..@table_width).include?(@x_position + 1) then
+			when "EAST" && (0..@table_width - 1 ).include?(@x_position + 1) then
 				is_move_in_bounds
-			when "SOUTH" && (0..@table_height).include?(@y_position - 1) then
+			when "SOUTH" && (0..@table_height - 1).include?(@y_position - 1) then
 				is_move_in_bounds 
-			when "WEST" && (0..@table_width).include?(@x_position - 1) then
+			when "WEST" && (0..@table_width - 1).include?(@x_position - 1) then
 				is_move_in_bounds
 			else
 				is_move_in_bounds = false
