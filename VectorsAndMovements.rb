@@ -1,42 +1,39 @@
-class VectorsAndMovements
-
-# how does this class know @ robotdirection?
+module VectorsAndMovements
+# For me to research the purpose of module verus class
+# Interestingly robot is able to access these methods without vectorsandmovements. prefix
+	VECTORS = {"NORTH" => 0, "EAST" => 1, "SOUTH" => 2, "WEST" => 3}
+	LEFT_OR_RIGHT = {"left" => -1, "right" => 1}
 
     def rotate(direction)
-    	@vectors = {"NORTH" => 0, "EAST" => 1, "SOUTH" => 2, "WEST" => 3} 
-		@left_or_right = {"left" => -1, "right" => 1}
-		@robot_direction = @vectors.key((@vectors[@robot_direction] + @left_or_right[direction]) % 4)
-		puts "Understood Sir. I've rotated to the #{direction}!" 
-		# 0 - 1 = -1
-		# -1 % 4 = 3 => West
+			@robot_direction = VECTORS.key((VECTORS[@robot_direction] + LEFT_OR_RIGHT[direction]) % 4)
+			puts "Understood Sir. I\'ve rotated to the #{direction}!"
+			puts "I\'m now facing #{@robot_direction}."
+			# 0 - 1 = -1 => Turn left from North
+			# -1 % 4 = 3 => West
     end
-    
-	def move(vector)
-		if @table.is_move_in_bounds?(vector)
-			#### Cannot find table. How do I let it access tables functions?
-			case vector
+
+	def move
+		if @table.is_move_in_bounds?(@robot_direction, @x_position, @y_position)
+			case @robot_direction
 				when "NORTH" then @y_position += 1
 				when "EAST" then @x_position += 1
 				when "SOUTH" then @y_position -= 1
 				when "WEST" then @x_position -= 1
 			end
-		puts "Okay I\'m moving #{@robot_direction} one space!" 
-		puts "I\'m now at #{@x_position}, #{@y_position}) and I\'m facing #{@robot_direction}."
-		else 
-		puts "WAIT!!...NOOOOO!!! I understand you yet...I\'m not doing that." 
-		puts "You\'ll drive me off the table! Let's try again..."
+			puts "Okay I\'m moving #{@robot_direction} one space!"
+			puts "I\'m now at (#{@x_position}, #{@y_position}) and I\'m facing #{@robot_direction}."
+		else
+			puts "WAIT!!...NOOOOO!!! I understand you yet...I\'m not doing that."
+			puts "You\'ll drive me off the table! Let's try again..."
 		end
 	end
 
-	def is_valid_vector?(x_position, y_position, vector) 
-		if 	x_position.nil? || y_position.nil? || @vectors[vector].nil?
-			return false
-			puts "vector invalid - temp"
-			# how else could this be written? Could this be just "false" OR is_valid_vector? = false OR return ... 
-		else
+	def is_valid_vector?(x_position, y_position, vector)
+		if 	!(x_position.nil? || y_position.nil? || VECTORS[vector].nil?)
 			return true
-			puts "vector valid - temp"
+		else
+			return false
 		end
 	end
-	
+
 end
