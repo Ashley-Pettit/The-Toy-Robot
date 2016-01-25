@@ -13,25 +13,24 @@ class Table
 	end
 
 	def is_move_in_bounds?(vector, x_position, y_position)
-		case vector
-			#Issue one - (,) seems to not be working here. 
-			#Problem caused by case statement not understanding &&. Different to if
-			#Forums say (,) may trigger [or] when need [and]
-			#When running program result is always [false]? means robot does not move
-			#One person suggested () around the two and to use &&
-			#I think the statement itself is somehow incorrect?
-			#It is required to minus one off the height/width as above
-			when ("NORTH" && (0..@table_height).include?(y_position + 1))
-				return true
-			when ("EAST" && (0..@table_width).include?(x_position + 1))
-				return true
-			when ("SOUTH" && (0..@table_height).include?(y_position - 1))
-				return true
-			when ("WEST" && (0..@table_width).include?(x_position - 1))
-				return true
-			else
-				return false
+		#Issue one - (,) seems to not be working here. 
+		#Problem caused by case statement not understanding &&. Different to if
+		#Forums say (,) may trigger [or] when need [and]
+		#When running program result is always [false]? means robot does not move
+		#One person suggested () around the two and to use &&
+		#I think the statement itself is somehow incorrect?
+		#It is required to minus one off the height/width as above
+		#Recommendation online to use IF STATEMENT. Changed to IF. 
+		if vector == "NORTH" && (0..(@table_height - 1)).include?(y_position + 1)
+			return true
+		elsif vector == "EAST" && (0..(@table_width - 1)).include?(x_position + 1)
+			return true
+		elsif vector == "SOUTH" && (0..(@table_height - 1)).include?(y_position - 1)
+			return true
+		elsif vector == "WEST" && (0..(@table_width - 1)).include?(x_position - 1)
+			return true
+		else
+			return false
 		end
 	end
-
 end

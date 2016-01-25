@@ -5,7 +5,6 @@
 # Attempting user focused code with things like .upcase and a seperated report function.
 # You can change the size of the table and the robot/table will function just fine.
 # give_command runs in an infinte loop until 'boom' is entered
-
 # Testing is with Rspec  ############
 
 require_relative 'Table'
@@ -33,22 +32,21 @@ class Robot
 			puts "Remember I understand PLACE / MOVE / LEFT / RIGHT / REPORT." unless @first_command
 			@first_command = false
 			@user_command = gets.chomp.upcase #To help users. Users always wrote in lowercase.
-			
-			case @user_command
-				when "REPORT" then report
-				when "PLACE" then place
-					#Issue 2 - @robot_placed == false is not triggering
-				when @robot_placed == false then puts "test"
-				puts "I'm not on the table yet!"
+			if @robot_placed == false && @user_command != "PLACE"
+				puts "I'm not on the table yet so I can't accept that command!"
 				puts "Please use [PLACE] to put me on the table."
-				when "MOVE" then move 
-				when "LEFT" then rotate("left") #load rotate and pass "left"
-				when "RIGHT" then rotate("right")
-				when "BOOM"  then boom # Terminate game
-				
-				else
-					puts "ATTTTEMMMPPTING [#{@user_command}] COMMAND... Hrmmmm.... Wait... Nope..."
-					puts "Sorry sir but I don't understand you :("
+			else
+				case @user_command
+					when "PLACE" then place
+					when "REPORT" then report
+					when "MOVE" then move 
+					when "LEFT" then rotate("left") #load rotate and pass "left"
+					when "RIGHT" then rotate("right")
+					when "BOOM"  then boom # Terminate game
+					else
+						puts "ATTTTEMMMPPTING [#{@user_command}] COMMAND... Hrmmmm.... Wait... Nope..."
+						puts "Sorry sir but I don't understand you :("
+				end
 			end
 		end
 	end
@@ -88,12 +86,7 @@ class Robot
 	end
 
 	def report
-		if @robot_placed
-			puts "Gotcha! Okay... My present location is (#{@x_position}, #{@y_position}) facing #{@robot_direction}."
-		else
-			puts "I need to be board first. Please enter [PLACE] to put me down."
-			puts "Many Thanks, The Toy Robot"
-		end
+		puts "Gotcha! Okay... My present location is (#{@x_position}, #{@y_position}) facing #{@robot_direction}."
 	end
 
 	def boom
