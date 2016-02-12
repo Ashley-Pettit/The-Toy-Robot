@@ -54,7 +54,7 @@ class Robot
 				place_instantly
 			elsif @user_command == "PLACE"
 				place
-			elsif @robot_placed
+			elsif @robot_placed   #These commands require the robot to be placed. The above can occur at any time
 				case @user_command 
 					when "REPORT" then report
 					when "MOVE" then move 
@@ -62,7 +62,7 @@ class Robot
 					when "RIGHT" then rotate("right")
 				end	
 			elsif valid_command?
-				puts "This is a valid command but I\'m not on the table yet!"
+				puts "This is a valid command however, I\'m not on the table yet!"
 				puts "Please use [PLACE] to put me on the table before entering [#{@user_command}]"
 			else 
 				puts "Attempting [#{@user_command}] command... Hrmmmm...."
@@ -76,7 +76,7 @@ class Robot
 		["PLACE","REPORT","MOVE","LEFT","RIGHT","BOOM"].include?(@user_command)
 	end
 
-	def place
+	def place #An easy interface for place
 		puts "Hey I understand you! Now... Where would you like to put me down?"
 		@continue_place = true
 		@continue_give_command = false
@@ -92,13 +92,13 @@ class Robot
 	 	end
 	end
 
-	def place_instantly 
+	def place_instantly #For the advanced user
 		@user_command.sub!("PLACE", "") 
 	 	@x_position, @y_position, @robot_direction = @user_command.split(",")
 		execute_placement
 	end
 
-	def execute_placement
+	def execute_placement 
 		@x_position = Integer @x_position rescue nil #rescue nil is used as a string entry throws an error. This error must be rescued
 		@y_position = Integer @y_position rescue nil 
 		if @table.is_placement_in_bounds?(@x_position, @y_position, @robot_direction)
@@ -129,4 +129,4 @@ class Robot
 
 end
 
-@Robot = Robot.new 
+Robot = Robot.new 
