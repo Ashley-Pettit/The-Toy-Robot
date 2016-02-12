@@ -1,6 +1,5 @@
 module VectorsAndMovements
-# For me to research the purpose of module verus class
-# Interestingly robot is able to access these methods without vectorsandmovements. prefix
+	
 	VECTORS = {"NORTH" => 0, "EAST" => 1, "SOUTH" => 2, "WEST" => 3}
 	LEFT_OR_RIGHT = {"left" => -1, "right" => 1}
 
@@ -28,12 +27,8 @@ module VectorsAndMovements
 		end
 	end
 
-	def is_valid_vector?(x_position, y_position, vector)
-		if 	!(x_position.nil? || y_position.nil? || VECTORS[vector].nil?)
-			return true
-		else
-			return false
-		end
+	def valid_vector?(x_position, y_position, vector)
+		(x_position.nil? && y_position.nil? && ["NORTH","EAST","SOUTH","WEST"]).include?(vector)
 	end
 
 end
