@@ -47,11 +47,12 @@ class Robot
 			puts "How about another command?" unless @first_command
 			@first_command = false
 			@user_command = gets.chomp.upcase #To help users. Users always wrote in lowercase.
-			if (@user_command.start_with?("PLACE") && @user_command != "PLACE")
-				#This is to allow [PLACE] OR [PLACE x,y,vector]. I feel this made the robot more accessible to the standard user.
+			if @user_command == "BOOM"
+				boom 
+			elsif (@user_command.start_with?("PLACE") && @user_command != "PLACE")
+				#This is to allow [PLACE] OR [PLACE X,Y,VECTOR]. I feel this made the robot more accessible to the standard user.
 				place_instantly
 			elsif @user_command == "PLACE"
-				puts "Hey I understand you! Now... Where would you like to put me down?"
 				place
 			elsif @robot_placed
 				case @user_command 
@@ -59,7 +60,6 @@ class Robot
 					when "MOVE" then move 
 					when "LEFT" then rotate("left") 
 					when "RIGHT" then rotate("right")
-					when "BOOM"  then boom 
 				end	
 			elsif valid_command?
 				puts "This is a valid command but I\'m not on the table yet!"
@@ -77,14 +77,19 @@ class Robot
 	end
 
 	def place
+		puts "Hey I understand you! Now... Where would you like to put me down?"
 		@continue_place = true
 		@continue_give_command = false
 		while @continue_place
-			puts "I understand [0-4], [0-4], [NORTH, EAST, SOUTH or WEST]. An example is 0 0 WEST" #This isn't correct. Table changes
-			@user_command = gets.chomp.upcase
-	 		@x_position, @y_position, @robot_direction = @user_command.split(" ")
-	 		execute_placement
-		end
+				puts "I understand [0-4], [0-4], [NORTH, EAST, SOUTH or WEST]. An example is 0 0 WEST" #This isn't correct. Table changes
+				@user_command = gets.chomp.upcase
+		 		if @user_command == "BOOM"
+					boom
+				else
+			 		@x_position, @y_position, @robot_direction = @user_command.split(" ")
+			 		execute_placement
+	 			end
+	 	end
 	end
 
 	def place_instantly 
@@ -104,7 +109,6 @@ class Robot
 		else
 			puts "You're entry makes no sense - You told me [#{@user_command}]. Let's try again."
 			puts "Please PLACE me within the bounds of the table following the given example"
-			place
 		end
 	end
 
@@ -125,4 +129,4 @@ class Robot
 
 end
 
-Robot.new 
+@Robot = Robot.new 
