@@ -6,7 +6,7 @@ class Table
 	end
 
 	def table_range
-		"[#{0} - #{@tablewidth - 1}],[#{0} - #{@tableheight - 1}]"
+		"[#{0}-#{@table_width - 1}],[#{0}-#{@table_height - 1}]"
 	end
 
 	def is_placement_in_bounds?(x_position, y_position, vector)
