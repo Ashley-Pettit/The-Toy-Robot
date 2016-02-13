@@ -23,8 +23,8 @@
 # 	-	f) The program attempts to give specific feedback e.g. movement would be off table rather than 'invalid command'
 # Despite making the program longer; this was designed to make the program more user friendly and now can be used by a non-technical user. It's also more fun!
 
-require_relative 'Table'
-require_relative 'VectorsAndMovements'
+require_relative 'table'
+require_relative 'vectors_and_movements'
 
 class Robot
 	include VectorsAndMovements
@@ -81,7 +81,7 @@ class Robot
 		@continue_place = true
 		@continue_give_command = false
 		while @continue_place
-				puts "I understand [0-4], [0-4], [NORTH, EAST, SOUTH or WEST]. An example is 0 0 WEST" #This isn't correct. Table changes
+				puts "I understand #{@table.table_range} [NORTH, EAST, SOUTH or WEST]. An example is 0 0 WEST" #This isn't correct. Table changes
 				@user_command = gets.chomp.upcase
 		 		if @user_command == "BOOM"
 					boom

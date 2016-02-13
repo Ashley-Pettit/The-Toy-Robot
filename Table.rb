@@ -5,6 +5,10 @@ class Table
 		@table_height = 5
 	end
 
+	def table_range
+		"[#{0} - #{@tablewidth - 1}],[#{0} - #{@tableheight - 1}]"
+	end
+
 	def is_placement_in_bounds?(x_position, y_position, vector)
 		((0..(@table_width - 1)).include?(x_position) && (0..(@table_height - 1)).include?(y_position) && (["NORTH","EAST","SOUTH","WEST"]).include?(vector))
 	end
@@ -22,4 +26,6 @@ class Table
 			false
 		end
 	end
+
+
 end
