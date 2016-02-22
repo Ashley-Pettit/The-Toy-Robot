@@ -46,7 +46,7 @@ class Robot
 		while @continue_give_command 
 			puts "How about another command?" unless @first_command
 			@first_command = false
-			@user_command = gets.chomp.upcase #To help users. Users always wrote in lowercase.
+			@user_command = gets.chomp.upcase #To help users. Users often wrote in lowercase.
 			if @user_command == "BOOM"
 				boom 
 			elsif (@user_command.start_with?("PLACE") && @user_command != "PLACE")
@@ -81,7 +81,7 @@ class Robot
 		@continue_place = true
 		@continue_give_command = false
 		while @continue_place
-				puts "I understand #{@table.table_range} [NORTH, EAST, SOUTH or WEST]. An example is 0 0 WEST" #This isn't correct. Table changes
+				puts "I understand #{@table.table_range} [NORTH, EAST, SOUTH or WEST]. An example is 0 0 WEST"
 				@user_command = gets.chomp.upcase
 		 		if @user_command == "BOOM"
 					boom
