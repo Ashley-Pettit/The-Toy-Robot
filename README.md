@@ -3,7 +3,7 @@
 
 This is my second build of the toy robot and it is very much thanks to the assistance of James McLaren from Arcade. James taught me 00 programming and is an awesome guy :) 
 
-<b>THE TOY ROBOT</b>
+<img src = "https://github.com/Ashley-Pettit/Toy-RobotV2/blob/master/Capture.JPG?raw=true"/>
 
 <b> ABOUT </b>
 
