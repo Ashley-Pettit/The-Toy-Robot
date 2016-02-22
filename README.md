@@ -1,18 +1,16 @@
-<<<<<<< HEAD
+
 <b>THE TOY ROBOT - Ashley Pettit </b>
 
 This is my second build of the toy robot and it is very much thanks to the assistance of James McLaren from Arcade. James taught me 00 programming and is an awesome guy :) 
-=======
+
 <b>THE TOY ROBOT</b>
 
 <b> ABOUT </b>
 
 This is my second build of the toy robot and it is very much thanks to the assistance of James McLaren. James taught me 00 programming. 
->>>>>>> origin/master
 
 Functionally this toy robot is virtually the same as my verison 1. The aim has been to encorporate more eligent code and better structure. 
 
-<<<<<<< HEAD
 At the bottom of this readme is the requirements of this coding task. 
 
 <b>ADDITIONS OUT OF SCOPE</b>
@@ -38,7 +36,6 @@ An example is you can change the table width and height very easily and the robo
 
 <b> SPEC MISSED / LIMITATIONS </b>
 
-=======
 This build of the toy robot is designed to meet the specifications below. 
 
 The only additions are:
@@ -63,7 +60,6 @@ An example is you can change the table width and height very easily and the robo
 
 <b> SPEC MISSED / LIMITATIONS </b>
 
->>>>>>> origin/master
 <ol>
     <li> This was not built in a TDD fashion and lacks unit testing. </li>
     <li> The program is longer than most. I did this to make it more user friendly yet the code is longer. </li>
@@ -145,8 +141,4 @@ Output: 3,3,NORTH
 
 Deliverables:
 
-<<<<<<< HEAD
 The source files, the test data and any test code.
-=======
-The source files, the test data and any test code.
->>>>>>> origin/master
