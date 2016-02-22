@@ -1,8 +1,8 @@
-<b>The traditional Toy Robot</b>
+<b>THE TOY ROBOT</b>
 
 <b> ABOUT </b>
 
-This is my 2nd build of the toy robot and it is very much thanks to the assistance of James McLaren. James didn't write the code however, he taught me 00 programming. 
+This is my second build of the toy robot and it is very much thanks to the assistance of James McLaren. James taught me 00 programming. 
 
 Functionally it is virtually the same however, the aim has been to encorporate more eligent code and better structure. 
 
@@ -50,19 +50,25 @@ An example is you can change the table width and height very easily and the robo
 <b> REQUIREMENTS OF THE ASSIGNMENT </b>
 
 Description:
+
+
 . The application is a simulation of a toy robot moving on a square tabletop, of dimensions 5 units x 5 units.
 . There are no other obstructions on the table surface.
 . The robot is free to roam around the surface of the table, but must be prevented from falling to destruction. Any movement
 that would result in the robot falling from the table must be prevented, however further valid movement commands must still
 be allowed.
+
  
-. Create an application that can read in commands of the following form -
+Create an application that can read in commands of the following form
+
+
 PLACE X,Y,F
 MOVE
 LEFT
 RIGHT
 REPORT
- 
+
+
 . PLACE will put the toy robot on the table in position X,Y and facing NORTH, SOUTH, EAST or WEST.
 . The origin (0,0) can be considered to be the SOUTH WEST most corner.
 . The first valid command to the robot is a PLACE command, after that, any sequence of commands may be issued, in any order, including another PLACE command. The application should discard all commands in the sequence until a valid PLACE command has been executed.
@@ -71,13 +77,16 @@ REPORT
 . REPORT will announce the X,Y and orientation of the robot.
 . A robot that is not on the table can choose to ignore the MOVE, LEFT, RIGHT and REPORT commands.
 . Provide test data to exercise the application.
- 
- 
+
+
 Constraints:
+
 The toy robot must not fall off the table during movement. This also includes the initial placement of the toy robot.
 Any move that would cause the robot to fall must be ignored.
  
+
 Example Input and Output:
+
 a)
 PLACE 0,0,NORTH
 MOVE
@@ -99,6 +108,7 @@ MOVE
 REPORT
 Output: 3,3,NORTH
  
- 
+
 Deliverables:
+
 The source files, the test data and any test code.
