@@ -1,27 +1,53 @@
-Ash's Toy Robot
+<b>The traditional Toy Robot</b>
 
-This is my 2nd build of the toy robot and it is very much thanks to the assistance of James McLaren. James didn't write the code however, he constantly gave me feedback and taught me 00 programming. 
+<b> ABOUT </b>
+
+This is my 2nd build of the toy robot and it is very much thanks to the assistance of James McLaren. James didn't write the code however, he taught me 00 programming. 
 
 Functionally it is virtually the same however, the aim has been to encorporate more eligent code and better structure. 
 
-This build of the toy robot is designed to meet the specifications below. The only additions are.
-    You may type place X Y Direction(As per specifications) or just place (Then you'll be prompted)
-    The program has a boom command to simply end the program
-    The program gives more detailed feedback than the specification required. This is aimed to make it user friendly
-    The program uses .upcase and .capitalize for the average user who may right 'left' rather than 'LEFT'
+This build of the toy robot is designed to meet the specifications below. 
 
-Parts of the spec missed
-    This was not built in a TDD fashion. 
-    It does however, have lots of testing to ensure the program will functions and will continue to function properly. These tests ideally to follow TDD should have been done at the start of the exercise. 
+The only additions are:
+<ul>
+    <li>You may type place X Y Direction(As per the specification) or just place (Then you'll be prompted for where to place)</li>
+    <li>The program has a boom command to simply end the program</li>
+    <li>The program gives more detailed feedback than the specification required. This is aimed to make it user friendly</li>
+    <li>The program uses .upcase and .capitalize for the average user who may write 'left' rather than 'LEFT'</li>
+</ul>
 
-A few things that I find interesting in the code
-    I'm quite proud of the solution here. The problem was making a left turn from north (Deemed 0) to west (Deemed 3). The problem was overcome using a hash of string to integer values and using modulo 4 to keep the bounds of the integers from 0-3. 
-    I'm also proud the left and right were combined into the one "rotate" command which merely passes left or right. This saves the use of an unnecessary function
-    You can change the table width and height very easily without having any affect on the program. It will run due to this line of code.
-        # when "WEST" && (0..@table_width).include?(@x_position - 1) then
-    Minus 1 is merely used such that a 5x5 table can be contstructed with the input of 5 rather than 4 (As 0,0 is the first position deemed South West). It leads to a little extra code however, I feel it makes it more understandable. 
+<b> CHALLENGES </b> 
 
-REQUIREMENTS
+Getting the robot to rotate without hard coding was initially a challenge. Hard coding of West + right => North would be easy but is not eligant code. 
+
+I'm quite proud of the solution here. The problem was overcome using a hash of string to integer values and using modulo 4 to keep the bounds of the integers from 0-3. 
+
+<b> FOCUS ON OBJECT ORIENTATION </b>
+
+Wherever possible there is zero hard coding. It may have been immediately easier but it's not ideal for supportable code.
+
+An example is you can change the table width and height very easily and the robot will run just fine. 
+
+<b> SPEC MISSED / LIMITATIONS </b>
+
+<ol>
+    <li> This was not built in a TDD fashion and lacks unit testing. </li>
+    <li> The program is longer than most. I did this to make it more user friendly yet the code is longer. </li>
+    <li> Only two classes were used. I originally had more but felt it added rather than removed complexity. </li>
+    <li> There is overuse of class variables rather that passing information. </li>
+</ol>
+
+<b> HOW TO RUN THE FILE </b>
+
+<ol>
+    <li> You will need ruby installed on your computer. For windows users this may need to be downloaded via rubyinstaller.org. For Mac users you are likely to already have ruby installed. </li>
+    <li> Press download zip and unzip to your desktop
+    <li> Open terminal or command prompt </li>
+    <li> Navigate to the downloaded unzipped file (Using cd) </li>
+    <li> Once in the correct folder type ruby robot.rb </li>
+</ol>
+
+<b> REQUIREMENTS OF THE ASSIGNMENT </b>
 
 Description:
 . The application is a simulation of a toy robot moving on a square tabletop, of dimensions 5 units x 5 units.
