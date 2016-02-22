@@ -1,3 +1,5 @@
+#These tests must be met. This will be done in my next update
+
 Example Input and Output:
 a)
 PLACE 0,0,NORTH

@@ -1,6 +1,7 @@
 class Table
 
 	def initialize
+		#Feel free to change the table size
 		@table_width = 5
 		@table_height = 5
 	end
