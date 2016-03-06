@@ -34,10 +34,6 @@ An example is you can change the table width and height very easily and the robo
 
 <b> SPEC MISSED / LIMITATIONS </b>
 
-This build of the toy robot is designed to meet the specifications below. 
-
-<b> SPEC MISSED / LIMITATIONS </b>
-
 <ol>
     <li> This was not built in a TDD fashion and lacks unit testing. </li>
     <li> The program is longer than most. I did this to make it more user friendly yet the code is longer. </li>
