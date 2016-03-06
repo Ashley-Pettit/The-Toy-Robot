@@ -7,8 +7,6 @@ This is my second build of the toy robot and it is very much thanks to the assis
 
 <b> ABOUT </b>
 
-This is my second build of the toy robot and it is very much thanks to the assistance of James McLaren. James taught me 00 programming. 
-
 Functionally this toy robot is virtually the same as my verison 1. The aim has been to encorporate more eligent code and better structure. 
 
 At the bottom of this readme is the requirements of this coding task. 
@@ -37,26 +35,6 @@ An example is you can change the table width and height very easily and the robo
 <b> SPEC MISSED / LIMITATIONS </b>
 
 This build of the toy robot is designed to meet the specifications below. 
-
-The only additions are:
-<ul>
-    <li>You may type place X Y Direction(As per the specification) or just place (Then you'll be prompted for where to place)</li>
-    <li>The program has a boom command to simply end the program</li>
-    <li>The program gives more detailed feedback than the specification required. This is aimed to make it user friendly</li>
-    <li>The program uses .upcase and .capitalize for the average user who may write 'left' rather than 'LEFT'</li>
-</ul>
-
-<b> CHALLENGES </b> 
-
-Getting the robot to rotate without hard coding was initially a challenge. Hard coding of West + right => North would be easy but is not eligant code. 
-
-I'm quite proud of the solution here. The problem was overcome using a hash of string to integer values and using modulo 4 to keep the bounds of the integers from 0-3. 
-
-<b> FOCUS ON OBJECT ORIENTATION </b>
-
-Wherever possible there is zero hard coding. It may have been immediately easier but it's not ideal for supportable code.
-
-An example is you can change the table width and height very easily and the robot will run just fine. 
 
 <b> SPEC MISSED / LIMITATIONS </b>
 
