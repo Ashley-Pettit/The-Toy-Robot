@@ -3,25 +3,31 @@
 # Welcome to Ash's Toy Robot
 # Few Comments
 # 
-# 1 - A hash is used for the vector using % 4. This allows the robot to rotate through 4 vectors without hard coding.
+# 1 - A hash is used for the vector using % 4. 
+# 		This allows the robot to rotate through 4 vectors without hard coding.
 # 2 - Testing is under Testing.rb and is using rspec
-# 3 - The program is built with two classes and one module. Two classes specify the two main items that interact. There was previously more classes yet
-# it lead to greater than than less complexity. For example feedback was previously a class yet I felt it added rather than removed complexity.
+# 3 - The program is built with two classes and one module. 
+# 		Two classes specify the two main items that interact. There was previously more classes yet
+# 		it lead to greater than than less complexity. For example feedback was previously a class and 
+# 		I felt it added rather than removed complexity.
 # 4 - give_command continues to run infinately unless the program is running place OR the user enters BOOM to end the program
 # 5 - Left and right are joined as one command called rotate which passes either "left" or "right"
 # 6 - There is an initial greeting which is one run once due to an 'unless' statement
 # 7 - James McClaren with his great help assisted me in building this project. 
-# 8 - Rescue Nil was used to help with integer conversion. As it is confined in it's use it is highly unlikely to hide an error.
+# 8 - Rescue Nil was used to help with integer conversion. 
+#     As it is confined in it's use it is highly unlikely to hide an error.
 # 9 - .sub is used to remove "PLACE" from the place_instantly (Pro) function
-# 10 - .Starts_with was made to check if the user was attempting the place instantly command. If place instantly fails the user returns to the place command
+# 10 - .Starts_with was made to check if the user was attempting the place instantly command. 
+# 		If place_instantly fails then the user goes to the place command loop
 # Extra - This project goes beyond the initial spec to attempt to make the program user accessible
 # 	-   a) .upcase is used incase the user enters a lowercase command
 # 	-   b) feedback is far more detailed than the spec specifies
 # 	-   c) there is a command for [PLACE] and [PLACE x,y,vector]. This allows beginner users to place the robot
 # 	-   d) The size of the table can be changed
-# 	-	e) The exit command 'BOOM'
-# 	-	f) The program attempts to give specific feedback e.g. movement would be off table rather than 'invalid command'
-# Despite making the program longer; this was designed to make the program more user friendly and now can be used by a non-technical user. It's also more fun!
+# 	-		e) The exit command 'BOOM'
+# 	-		f) The program attempts to give specific feedback e.g. movement would be off table rather than 
+# 	'invalid command'. Despite making the program longer; this was designed to make the program more user 
+# 	friendly and now can be used by a non-technical user. It's also more fun!
 
 require_relative 'table'
 require_relative 'vectors_and_movements'
