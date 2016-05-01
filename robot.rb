@@ -105,7 +105,10 @@ class Robot
 	end
 
 	def execute_placement 
-		@x_position = Integer @x_position rescue nil #rescue nil is used as a string entry throws an error. This error must be rescued
+		#rescue nil is used as a string entry throws an error. This error must be rescued
+		#Using .to_i will turn string into 0. This is not desired as 0 is a valid position. 
+		#Alternatively this code could be used.  => i.to_i if i.match(/^\d+$/)
+		@x_position = Integer @x_position rescue nil 
 		@y_position = Integer @y_position rescue nil 
 		if @table.is_placement_in_bounds?(@x_position, @y_position, @robot_direction)
 			puts "Okay Sir, I have been placed at #{@x_position} #{@y_position} facing #{@robot_direction}."
@@ -125,8 +128,7 @@ class Robot
 	def boom
 		puts "ERROR ERROR THIS SHOULD NOT HAVE HAPPENEND!!! BOOOOOOMMM!!!..."
 		puts "Your robot exploded... The end."
-		@continue_give_command = false
-		@continue_place = false
+		exit
 	end
 
   	def starts_with?(characters)
