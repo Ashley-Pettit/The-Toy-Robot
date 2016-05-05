@@ -1,18 +1,18 @@
 module VectorsAndMovements
-# For me to research the purpose of module verus class
-# Interestingly robot is able to access these methods without vectorsandmovements. prefix
+	
 	VECTORS = {"NORTH" => 0, "EAST" => 1, "SOUTH" => 2, "WEST" => 3}
+	#use .rotate
 	LEFT_OR_RIGHT = {"left" => -1, "right" => 1}
 
     def rotate(direction)
 			@robot_direction = VECTORS.key((VECTORS[@robot_direction] + LEFT_OR_RIGHT[direction]) % 4)
 			puts "Understood Sir. I\'ve rotated to the #{direction}!"
 			puts "I\'m now facing #{@robot_direction}."
-			# 0 - 1 = -1 => Turn left from North
-			# -1 % 4 = 3 => West
+			# 0(North) - 1(Left) => -1(Unknown)
+			# -1(Unknown) % 4 => 3(West). Thus the robot rotates through 0..3
     end
 
-	def move
+	def moves
 		if @table.is_move_in_bounds?(@robot_direction, @x_position, @y_position)
 			case @robot_direction
 				when "NORTH" then @y_position += 1
@@ -28,12 +28,8 @@ module VectorsAndMovements
 		end
 	end
 
-	def is_valid_vector?(x_position, y_position, vector)
-		if 	!(x_position.nil? || y_position.nil? || VECTORS[vector].nil?)
-			return true
-		else
-			return false
-		end
+	def valid_vector?(x_position, y_position, vector)
+		(x_position.nil? && y_position.nil? && ["NORTH","EAST","SOUTH","WEST"]).include?(vector)
 	end
 
 end
