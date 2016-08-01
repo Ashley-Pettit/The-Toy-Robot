@@ -7,7 +7,7 @@ The most exciting console app you'll ever find!
 The Toy Robot test is a programming excercise that is very popular in Melbourne.
 The problem involves making a robot move around a table without falling off.
 
-This solution attempts to show SOLID programming principals and is design to be simple yet scalable.
+This solution attempts to show SOLID programming principals and is designed to be simple yet scalable.
 
 At the bottom of this readme is the requirements of this coding task.
 
@@ -23,13 +23,13 @@ At the bottom of this readme is the requirements of this coding task.
 
 1. Deciding which classes to separate is always an interesting one! I've attempted to show a balanced approach aiming for simplicity yet also factoring likely scale. I changed my classes quite a few times trying to decide what made the most sense!
 
-2. Making a robot rotate is harder than might be thought! How do you make a robot turn right from West and then become north? Sure you could hard-code it but that's not a scalable solution.
+2. Making a robot rotate is harder than might be thought! How do you make a robot turn right from West and then become North? Sure you could hard-code it but that's not a scalable solution.
 
 - My idea was using modulo 4 to allow the robot to rotate through a hash containing the 4 vectors. In a later commit I realised that the hardcoding of a constant four vectors didn't follow single-responsiblity design as an addition of a vector would break the robot's rotation.
 
 - So I'm proud of the final solution here. There is now a compass class and the robot rotates through vectors.length (which is a method inside the compass). This allows the compass to be changed without causing the robot to fail. (Say someone added north-east to vectors. This is now no problemo and would require no change to the robot class).
 
-I've rebuilt the robot a few times. Each time I learn new things I try to rebuild the robot with what I've learnt. Many conversations ands books have infulenced how I have decided to do class seperation and method construction.
+I've rebuilt the robot a few times. Each time I learn new things I try to rebuild the robot with what I've learnt.
 
 ##FOCUS ON OBJECT ORIENTATION
 
