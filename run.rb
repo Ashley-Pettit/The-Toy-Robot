@@ -18,5 +18,5 @@
 require_relative 'lib/commander'
 
 @commander = Commander.new
-@commander.greeting
+@commander.greeting_message
 @commander.input_command
